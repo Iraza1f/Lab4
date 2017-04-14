@@ -64,7 +64,7 @@ int main()
 	int size = 0;
 	int x;
 	Node *MyTree = NULL;
-	int w = 6;
+	int w = 0;
 	cin >> w;
 	int z = 0;
 	int y = 0;
