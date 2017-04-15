@@ -1,86 +1,88 @@
 #include <iostream>
 using namespace std;
 const int con = 1; //При увеличении максимального количества узлов + 1
-struct Node
+class Node
+{	
+public:
+Node *l, *r, *u;
+int z;
+void add(int x, Node *&Treee)
 {
-	Node *l, *r, *u;
-	int z;
-};
-void add(int x, Node *&MyTree)
-{
-	if (NULL == MyTree)// Создание узла
+	if (NULL == Treee)// Создание узла
 	{
-		MyTree = new Node;
-		MyTree->z = x;
-		MyTree->l = MyTree->r = MyTree->u = NULL;
+		Treee = new Node;
+		Treee->z = x;
+		Treee->l = Treee->r = Treee->u = NULL;
 	}
 
-	if (x<MyTree->z)// В левую сторону
+	if (x<Treee->z)// В левую сторону
 	{
-		if (MyTree->l != NULL) add(x, MyTree->l);
+		if (Treee->l != NULL) add(x, Treee->l);
 		else
 		{
-			MyTree->l = new Node;
-			MyTree->l->l = MyTree->l->r = MyTree->l->u = NULL;
-			MyTree->l->z = x;
+			Treee->l = new Node;
+			Treee->l->l = Treee->l->r = Treee->l->u = NULL;
+			Treee->l->z = x;
 		}
 	}
 
-	if (x>MyTree->z)// В правую сторону
+	if (x>Treee->z)// В правую сторону
 	{
-		if (MyTree->r != NULL) add(x, MyTree->r);
+		if (Treee->r != NULL) add(x, Treee->r);
 		else
 		{
-			MyTree->r = new Node;
-			MyTree->r->l = MyTree->r->r = MyTree->r->u = NULL;
-			MyTree->r->z = x;
+			Treee->r = new Node;
+			Treee->r->l = Treee->r->r = Treee->r->u = NULL;
+			Treee->r->z = x;
 		}
 	}
 
-	if (x == MyTree->z)// Вниз
+	if (x == Treee->z)// Вниз
 	{
-		if (MyTree->u != NULL) add(x, MyTree->u);
+		if (Treee->u != NULL) add(x, Treee->u);
 		else
 		{
-			MyTree->u = new Node;
-			MyTree->u->l = MyTree->u->r = MyTree->u->u = NULL;
-			MyTree->u->z = x;
+			Treee->u = new Node;
+			Treee->u->l = Treee->u->r = Treee->u->u = NULL;
+			Treee->u->z = x;
 		}
 	}
 }
 void Show(Node *tree, int &size)
 {
-	if (tree!= NULL)
-	{		
+	if (tree != NULL)
+	{
 		Show(tree->l, size);
 		Show(tree->r, size);
 		Show(tree->u, size);
 		size += tree->z;
 	}
 }
+};
 int main()
 {
 	int size = 0;
 	int x;
-	Node *MyTree = NULL;
+	Node *Treee = NULL;
 	int w = 0;
+	cout << "Kol-vo elementov v dereve = ";
 	cin >> w;
 	int z = 0;
 	int y = 0;
 	while (z<w)
 	{
-		cout << "X = "; 
+		cout << "x = ";
 		cin >> x;
 		if (z == 0)
 		{
 			y = x*con;//Для того чтобы корень не считался дважды
 		}
-		add(x, MyTree);
+		Treee->add(x, Treee);
 		z++;
 	}
-	Show(MyTree,size);
+	Treee->Show(Treee, size);
 	size -= y;
-	cout << size<<endl;
+	cout <<"Summa elementov "<< size << endl;
 	delete Treee->r;
 	delete Treee->l;
 	delete Treee->u;
