@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-const int con = 2; //При увеличении максимального количества узлов + 1
+const int con = 1; //При увеличении максимального количества узлов + 1
 struct Node
 {
 	Node *l, *r, *u;
@@ -26,7 +26,7 @@ void add(int x, Node *&MyTree)
 		}
 	}
 
-	if (x>=MyTree->z)// В правую сторону
+	if (x>MyTree->z)// В правую сторону
 	{
 		if (MyTree->r != NULL) add(x, MyTree->r);
 		else
@@ -48,15 +48,16 @@ void add(int x, Node *&MyTree)
 		}
 	}
 }
-
-void Sum(Node *tree, int &size)//
+void Show(Node *tree, int &size)
 {
 	if (tree!= NULL)
-	{
-		Sum(tree->l, size);
-		Sum(tree->r, size);
-		Sum(tree->u, size);
+	{	
+
+		Show(tree->l, size);
+		Show(tree->r, size);
+		Show(tree->u, size);
 		size += tree->z;
+
 	}
 }
 int main()
@@ -79,7 +80,7 @@ int main()
 		add(x, MyTree);
 		z++;
 	}
-	Sum(MyTree,size);
+	Show(MyTree,size);
 	size -= y;
 	cout << size<<endl;
 }
