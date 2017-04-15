@@ -81,8 +81,8 @@ int main()
 	Show(MyTree,size);
 	size -= y;
 	cout << size<<endl;
-	delete Tree->r;
-	delete Tree->l;
-	delete Tree->u;
+	delete Treee->r;
+	delete Treee->l;
+	delete Treee->u;
 	delete Treee;
 }
