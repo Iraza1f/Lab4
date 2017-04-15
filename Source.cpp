@@ -52,12 +52,10 @@ void Show(Node *tree, int &size)
 {
 	if (tree!= NULL)
 	{	
-
 		Show(tree->l, size);
 		Show(tree->r, size);
 		Show(tree->u, size);
 		size += tree->z;
-
 	}
 }
 int main()
@@ -66,12 +64,13 @@ int main()
 	int x;
 	Node *MyTree = NULL;
 	int w = 0;
+	cout << "Kol-vo elementov v dereve = "; 
 	cin >> w;
 	int z = 0;
 	int y = 0;
 	while (z<w)
 	{
-		cout << "X = "; 
+		cout << "x = "; 
 		cin >> x;
 		if (z == 0)
 		{
