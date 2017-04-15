@@ -51,7 +51,7 @@ void add(int x, Node *&MyTree)
 void Show(Node *tree, int &size)
 {
 	if (tree!= NULL)
-	{	
+	{		
 		Show(tree->l, size);
 		Show(tree->r, size);
 		Show(tree->u, size);
@@ -64,13 +64,12 @@ int main()
 	int x;
 	Node *MyTree = NULL;
 	int w = 0;
-	cout << "Kol-vo elementov v dereve = "; 
 	cin >> w;
 	int z = 0;
 	int y = 0;
 	while (z<w)
 	{
-		cout << "x = "; 
+		cout << "X = "; 
 		cin >> x;
 		if (z == 0)
 		{
@@ -82,4 +81,8 @@ int main()
 	Show(MyTree,size);
 	size -= y;
 	cout << size<<endl;
+	delete Tree->r;
+	delete Tree->l;
+	delete Tree->u;
+	delete Treee;
 }
